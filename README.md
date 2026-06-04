@@ -18,9 +18,10 @@ curl -fsSL https://raw.githubusercontent.com/myuuu-io/dot-ai_lightin/main/instal
 
 ```bash
 cd lightin
-cp .env.example .env.local   # キーを設定 (JINA_API_KEY 必須 / OPENAI_API_KEY 任意)
 claude
 ```
+
+アイキャッチ画像も自動生成したい場合だけ、`.env.local` に `OPENAI_API_KEY` を設定してください (無くても記事は書けます)。
 
 ### ZIP でもインストールできます
 
@@ -41,9 +42,8 @@ claude
 
 | もの | 必須 | 備考 |
 |---|---|---|
-| [Claude Code](https://claude.com/claude-code) | ✅ | |
+| [Claude Code](https://claude.com/claude-code) | ✅ | Web 検索も内蔵ツールで行うのでキー不要 |
 | Python 3.9+ | ✅ | macOS は標準搭載 |
-| `JINA_API_KEY` | ✅ | [無料発行](https://jina.ai/api-dashboard/)。Web 検索に必須 |
 | `OPENAI_API_KEY` | 任意 | アイキャッチ生成用。無ければ画像なしで公開 |
 
 ## 仕組み
@@ -51,7 +51,7 @@ claude
 ```
 あなた「◯◯について記事書いて」
    │
-   ├─ 1. lightin-researcher  … Jina Reader で Web 検索・ソース収集
+   ├─ 1. lightin-researcher  … WebSearch / WebFetch で Web 検索・ソース収集
    ├─ 2. lightin-writer      … 設定した人格で記事執筆
    ├─ 3. lightin-illustrator … gpt-image でアイキャッチ生成
    └─ 4. lightin-builder     … 静的 HTML サイト生成 → ブラウザで表示

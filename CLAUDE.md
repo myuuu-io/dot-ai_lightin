@@ -19,7 +19,7 @@
 
 | 順番 | サブエージェント | 役割 | 入出力 |
 |---|---|---|---|
-| 1 | `lightin-researcher` | Jina Reader で Web 検索・一次ソース収集 | → `content/research/{slug}.md` |
+| 1 | `lightin-researcher` | WebSearch / WebFetch で Web 検索・一次ソース収集 | → `content/research/{slug}.md` |
 | 2 | `lightin-writer` | persona 準拠で記事執筆 | research → `content/articles/{slug}.md` |
 | 3 | `lightin-illustrator` | アイキャッチ画像生成 (gpt-image) | → `content/images/{slug}/eyecatch.png` |
 | 4 | `lightin-builder` | 静的 HTML サイト生成 | articles → `site/` |
@@ -55,5 +55,11 @@ site/                   # 公開用 HTML (builder の出力、毎回フル再生
 
 | キー | 必須 | 用途 |
 |---|---|---|
-| `JINA_API_KEY` | ✅ | Web 検索に必須 (無いと s.jina.ai が 401)。本文取得のみキー無しでも可 |
 | `OPENAI_API_KEY` | 任意 | アイキャッチ画像生成 (無ければ画像なしで動く) |
+
+Web 検索・本文取得は Claude Code 内蔵の WebSearch / WebFetch を使うため **API キー不要**。
+
+## サンプル記事
+
+`content/articles/claude-code-getting-started.md` はライティンが実際に書いたサンプル記事 (画像つき)。
+オンボーディング時にメディアのテーマと合わない場合は、削除してよいかユーザーに確認すること。

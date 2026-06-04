@@ -1,58 +1,39 @@
 ---
 name: web-research
-description: Jina Reader (s.jina.ai / r.jina.ai) で Web 検索と本文取得を行う手順。記事のリサーチ・ファクトチェックに使う。
+description: Claude Code 内蔵の WebSearch / WebFetch で Web 検索と本文取得を行う手順。API キー不要。記事のリサーチ・ファクトチェックに使う。
 ---
 
-# Web リサーチ (Jina Reader)
+# Web リサーチ (WebSearch / WebFetch)
 
-## API キーの読み込み
+Claude Code 内蔵ツールだけで完結する。**API キーは一切不要。**
 
-`.env.local` → `.env` → 環境変数の順で `JINA_API_KEY` を探す:
+## 1. 検索 (WebSearch)
 
-```bash
-JINA_API_KEY=$(grep -s '^JINA_API_KEY=' .env.local .env | head -1 | cut -d= -f2)
-```
+- クエリは日本語でよい。読者が検索しそうな言葉 + 「公式」「とは」「最新」等で言い換える
+- 1 テーマにつき検索は 2〜3 クエリまで (数を増やすより言い換えで質を上げる)
+- 結果のタイトル・スニペットだけで事実を書かない。必ず本文を読む
 
-**検索 (s.jina.ai) はキー必須** (未設定だと 401 が返る)。本文取得 (r.jina.ai) はキー無しでも動くがレート制限が厳しい。
+## 2. 本文取得 (WebFetch)
 
-キーが無い場合: 検索はスキップし、ユーザーに「https://jina.ai/api-dashboard/ で無料発行して `.env.local` に設定してください」と案内する。テーマに関する公式サイト等の既知 URL があれば、それを直接 r.jina.ai で読んでリサーチを続行してよい。
+検索結果から読む価値のある URL を選び、WebFetch で本文を読む:
 
-## 1. 検索 (s.jina.ai) — キー必須
-
-```bash
-curl -s "https://s.jina.ai/?q=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1]))" "検索クエリ")" \
-  -H "Authorization: Bearer $JINA_API_KEY" \
-  -H "Accept: application/json" \
-  -H "X-Respond-With: no-content"
-```
-
-- JSON で `data[].title / url / description` が返る
-- 1 テーマにつき検索は 2〜3 クエリまで (言い換え・絞り込みで質を上げる)
-
-## 2. 本文取得 (r.jina.ai) — キー無しでも可
-
-検索結果から読む価値のある URL を選び、本文を Markdown で取得:
-
-```bash
-curl -s "https://r.jina.ai/https://example.com/page" \
-  -H "Authorization: Bearer $JINA_API_KEY"
-```
-
-- 出力が長い場合は一時ファイルに保存してから Read で必要部分だけ読む:
-  `curl -s ... -o /tmp/jina-{n}.md`
+- prompt には「この記事の要点・数字・日付を原文の表記のまま抽出して」のように指示する
+- **最低 3 つ、できれば 5 つ**の独立したソースに当たる
+- 取得できないサイト (ログイン必須・ブロック等) は深追いせず別ソースへ
+- 公開日が古い記事は、制度・価格・手順が変わっている前提で最新ソースと突き合わせる
 
 ## ソースの信頼度判定
 
 | 信頼度 | 例 |
 |---|---|
-| 高 | 政府・自治体 (go.jp / lg.jp)、企業公式、学術機関、一次統計 |
+| 高 | 政府・自治体 (go.jp / lg.jp)、企業公式・公式ドキュメント、学術機関、一次統計 |
 | 中 | 大手メディア、業界専門メディア、公式ブログ |
 | 低 | まとめサイト、アフィリエイト記事、個人ブログ、Q&A サイト |
 
 - 信頼度: 低のソースは「話題の発見」にのみ使い、事実の根拠にしない
-- 日付の古い情報 (制度・価格・統計) は必ず最新ソースで再確認する
+- 数字 (金額・割合・日付) は必ず出典つきでノートに記録する
 
 ## マナー
 
-- 同一ドメインへの連続アクセスは避ける
 - 取得した本文の丸写しは禁止。要点を自分の言葉でノート化する
+- リサーチノートには各ソースの取得日と信頼度を必ず残す (writer と読者への説明責任)

@@ -1,10 +1,10 @@
 {
   "permissions": {
     "allow": [
+      "WebSearch",
+      "WebFetch",
       "Bash(python3 .claude/skills/site-builder/scripts/build_site.py*)",
       "Bash(python3 .claude/skills/image-generation/scripts/generate_image.py*)",
-      "Bash(curl -s https://s.jina.ai/*)",
-      "Bash(curl -s https://r.jina.ai/*)",
       "Bash(open site/index.html)",
       "Bash(open site/articles/*)",
       "Bash(ls*)",
