@@ -1,0 +1,6 @@
+.env
+.env.local
+site/
+content/research/
+.DS_Store
+__pycache__/
