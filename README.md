@@ -17,17 +17,18 @@ curl -fsSL https://raw.githubusercontent.com/myuuu-io/dot-ai_lightin/main/instal
 その後:
 
 ```bash
-cd lightin
-claude
+cd lightin && claude "よろしく！"
 ```
+
+最初のメッセージが届くとライティンが挨拶して、ヒアリングが始まります (`claude` だけで起動した場合は何か一言話しかけてください)。
 
 アイキャッチ画像も自動生成したい場合だけ、`.env.local` に `OPENAI_API_KEY` を設定してください (無くても記事は書けます)。
 
 ### ZIP でもインストールできます
 
-コマンドが苦手な方は [ZIP をダウンロード](https://github.com/myuuu-io/dot-ai_lightin/archive/refs/heads/main.zip) して解凍 → そのフォルダで上記の手順 (`.env.local` 作成 → `claude`) でも同じように動きます。
+コマンドが苦手な方は [ZIP をダウンロード](https://github.com/myuuu-io/dot-ai_lightin/archive/refs/heads/main.zip) して解凍 → そのフォルダで `claude "よろしく！"` でも同じように動きます。
 
-初回起動でライティンが挨拶し、ヒアリングが始まります。
+最初のひとことが届くとライティンが挨拶し、ヒアリングが始まります。
 メディア名・テーマ・読者像・人格・トンマナを答えると、君だけのメディアがセットアップされます。
 
 ## 使い方
