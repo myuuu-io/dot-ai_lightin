@@ -18,7 +18,7 @@ curl -fsSL https://raw.githubusercontent.com/myuuu-io/dot-ai_lightin/main/instal
 
 ```bash
 cd lightin
-cp .env.example .env.local   # キーを設定 (JINA_API_KEY 推奨 / OPENAI_API_KEY 任意)
+cp .env.example .env.local   # キーを設定 (JINA_API_KEY 必須 / OPENAI_API_KEY 任意)
 claude
 ```
 
@@ -43,7 +43,7 @@ claude
 |---|---|---|
 | [Claude Code](https://claude.com/claude-code) | ✅ | |
 | Python 3.9+ | ✅ | macOS は標準搭載 |
-| `JINA_API_KEY` | 推奨 | [無料発行](https://jina.ai/api-dashboard/)。無くても動くがレート制限あり |
+| `JINA_API_KEY` | ✅ | [無料発行](https://jina.ai/api-dashboard/)。Web 検索に必須 |
 | `OPENAI_API_KEY` | 任意 | アイキャッチ生成用。無ければ画像なしで公開 |
 
 ## 仕組み

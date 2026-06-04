@@ -13,9 +13,11 @@ description: Jina Reader (s.jina.ai / r.jina.ai) で Web 検索と本文取得�
 JINA_API_KEY=$(grep -s '^JINA_API_KEY=' .env.local .env | head -1 | cut -d= -f2)
 ```
 
-キーが無くても動くが、レート制限 (20 RPM) が厳しい。無い場合は検索回数を最小限にする。
+**検索 (s.jina.ai) はキー必須** (未設定だと 401 が返る)。本文取得 (r.jina.ai) はキー無しでも動くがレート制限が厳しい。
 
-## 1. 検索 (s.jina.ai)
+キーが無い場合: 検索はスキップし、ユーザーに「https://jina.ai/api-dashboard/ で無料発行して `.env.local` に設定してください」と案内する。テーマに関する公式サイト等の既知 URL があれば、それを直接 r.jina.ai で読んでリサーチを続行してよい。
+
+## 1. 検索 (s.jina.ai) — キー必須
 
 ```bash
 curl -s "https://s.jina.ai/?q=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1]))" "検索クエリ")" \
@@ -25,10 +27,9 @@ curl -s "https://s.jina.ai/?q=$(python3 -c "import urllib.parse,sys;print(urllib
 ```
 
 - JSON で `data[].title / url / description` が返る
-- キー未設定時は `Authorization` ヘッダーを外す
 - 1 テーマにつき検索は 2〜3 クエリまで (言い換え・絞り込みで質を上げる)
 
-## 2. 本文取得 (r.jina.ai)
+## 2. 本文取得 (r.jina.ai) — キー無しでも可
 
 検索結果から読む価値のある URL を選び、本文を Markdown で取得:
 
