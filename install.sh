@@ -3,8 +3,8 @@
 # 使い方: curl -fsSL https://raw.githubusercontent.com/YOUR_ORG/lightin/main/install.sh | bash
 set -euo pipefail
 
-# ===== 設定 (リポジトリ公開時にここを書き換える) =====
-REPO="YOUR_ORG/lightin"
+# ===== 設定 =====
+REPO="myuuu-io/dot-ai_lightin"
 BRANCH="main"
 TARGET_DIR="${1:-lightin}"
 # ====================================================

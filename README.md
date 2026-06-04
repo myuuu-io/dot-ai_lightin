@@ -11,7 +11,7 @@
 ## インストール
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_ORG/lightin/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/myuuu-io/dot-ai_lightin/main/install.sh | bash
 ```
 
 その後:
@@ -21,6 +21,10 @@ cd lightin
 cp .env.example .env.local   # キーを設定 (JINA_API_KEY 推奨 / OPENAI_API_KEY 任意)
 claude
 ```
+
+### ZIP でもインストールできます
+
+コマンドが苦手な方は [ZIP をダウンロード](https://github.com/myuuu-io/dot-ai_lightin/archive/refs/heads/main.zip) して解凍 → そのフォルダで上記の手順 (`.env.local` 作成 → `claude`) でも同じように動きます。
 
 初回起動でライティンが挨拶し、ヒアリングが始まります。
 メディア名・テーマ・読者像・人格・トンマナを答えると、君だけのメディアがセットアップされます。
