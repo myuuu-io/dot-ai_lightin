@@ -23,7 +23,7 @@ tools: Bash, Read, Glob
 
 ## ルール
 
-- 画像スタイルは `lightin.config.json` の `imageStyle` に従う
+- 画像スタイルは `settings/lightin.config.json` の `imageStyle` に従う
 - **トンマナの一貫性**: 過去に生成したアイキャッチが `content/images/` にあれば、最新の 1 枚を `--reference` に渡してスタイルを揃える
 - 画像内に文字を入れる場合は記事タイトルの短縮版のみ。誤字が起きやすいので長文は入れない
 - `OPENAI_API_KEY` が見つからない場合はエラーにせず「画像生成はスキップ (キー未設定)」と報告して正常終了する

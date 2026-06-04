@@ -62,7 +62,7 @@ rm -f "$TMP_TAR"
 # ---- 初期セットアップ ----
 cd "$TARGET_DIR"
 [ -f .env.local ] || cp .env.example .env.local
-mkdir -p content/articles content/images content/research persona
+mkdir -p content/articles content/images content/research settings
 
 echo -e "  ✅ ${BOLD}${TARGET_DIR}/${RESET} に展開したよ！"
 echo ""

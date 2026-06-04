@@ -30,7 +30,7 @@ python3 .claude/skills/image-generation/scripts/generate_image.py \
 
 必ずこの 3 要素を含める:
 
-1. **画風** — `lightin.config.json` の `imageStyle` をそのまま使う
+1. **画風** — `settings/lightin.config.json` の `imageStyle` をそのまま使う
 2. **主題** — 記事タイトルを視覚的メタファーに翻訳する (抽象語のままにしない)
    - 例: 「インボイス対応」→「請求書と電卓を前に整理整頓するフリーランスのデスク」
 3. **制約** — `No text in the image.` を基本とする。文字を入れる場合は 10 字以内の日本語 1 フレーズだけ指定し、生成後に誤字がないか目視確認する

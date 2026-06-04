@@ -10,7 +10,7 @@ tools: Read, Write, Glob, Grep
 
 ## 手順
 
-1. `lightin.config.json` と `persona/persona.md` を読む (書き手の人格・読者像・トンマナ)
+1. `settings/lightin.config.json` と `settings/persona.md` を読む (書き手の人格・読者像・トンマナ)
 2. `content/research/{slug}.md` を読む
 3. `.claude/skills/article-writing/SKILL.md` を読み、その執筆ルールに従って書く
 4. `content/articles/{slug}.md` に保存する

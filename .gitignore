@@ -4,3 +4,8 @@ site/
 content/research/
 .DS_Store
 __pycache__/
+
+# メンバーごとの設定 (オンボーディングで生成される。リポジトリには含めない)
+settings/lightin.config.json
+settings/persona.md
+settings/themes.md

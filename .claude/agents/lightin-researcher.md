@@ -16,7 +16,7 @@ tools: WebSearch, WebFetch, Read, Write, Glob, Grep
 
 - 記事テーマ
 - slug (英語 kebab-case)
-- `lightin.config.json` の読者像・テーマ領域 (検索の観点を絞るのに使う)
+- `settings/lightin.config.json` の読者像・テーマ領域 (検索の観点を絞るのに使う)
 
 ## 出力
 

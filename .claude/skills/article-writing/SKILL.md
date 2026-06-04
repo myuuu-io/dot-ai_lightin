@@ -1,11 +1,11 @@
 ---
 name: article-writing
-description: オウンドメディア記事の汎用執筆ルール。構成・AI 臭排除・ファクト規律。人格やテーマは persona.md / lightin.config.json 側で定義する。
+description: オウンドメディア記事の汎用執筆ルール。構成・AI 臭排除・ファクト規律。人格やテーマは settings/ (persona.md / lightin.config.json) 側で定義する。
 ---
 
 # 記事執筆ルール (汎用)
 
-「どう書くか」だけを定義する。「誰の口調で・何を書くか」は `persona/persona.md` と `lightin.config.json` が決める。
+「どう書くか」だけを定義する。「誰の口調で・何を書くか」は `settings/persona.md` と `settings/lightin.config.json` が決める。
 
 ## 構成
 

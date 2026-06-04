@@ -13,7 +13,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path.cwd()
-CONFIG_PATH = ROOT / "lightin.config.json"
+CONFIG_PATH = ROOT / "settings" / "lightin.config.json"
 ARTICLES_DIR = ROOT / "content" / "articles"
 IMAGES_DIR = ROOT / "content" / "images"
 SITE_DIR = ROOT / "site"
@@ -365,7 +365,7 @@ def render_page(content: str, *, title: str, description: str, config: dict, dep
 
 def main() -> None:
     if not CONFIG_PATH.exists():
-        print("config エラー: lightin.config.json がありません。先にオンボーディングを実行してください。")
+        print("config エラー: settings/lightin.config.json がありません。先にオンボーディングを実行してください。")
         sys.exit(1)
     config = json.loads(CONFIG_PATH.read_text())
     accent = config.get("design", {}).get("accentColor", "#2cb696")

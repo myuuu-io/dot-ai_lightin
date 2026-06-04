@@ -11,7 +11,7 @@ description: content/articles/*.md から静的 HTML サイト (site/) をフル
 python3 .claude/skills/site-builder/scripts/build_site.py
 ```
 
-これだけ。`lightin.config.json` と `content/` を読んで `site/` を**毎回フル再生成**する。
+これだけ。`settings/lightin.config.json` と `content/` を読んで `site/` を**毎回フル再生成**する。
 
 ## 何が生成されるか
 
@@ -34,5 +34,5 @@ site/
 
 ## トラブルシュート
 
-- `config エラー`: `lightin.config.json` が無い → オンボーディング未完了。先にオンボーディングを実行
+- `config エラー`: `settings/lightin.config.json` が無い → オンボーディング未完了。先にオンボーディングを実行
 - 記事がスキップされた: 警告に出た frontmatter のキー欠落を直す
